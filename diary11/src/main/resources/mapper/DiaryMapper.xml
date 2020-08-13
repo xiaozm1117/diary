@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.diary.dao.DiaryDao">
+	<insert id="write" parameterType="com.diary.vo.Diary">
+		insert into diaries
+		(userId,createTime,content) 
+		values
+		(#{userId},#{createTime},#{content})
+	
+	</insert>
+    <select id="readFilePath" resultType="String">
+    	
+    	
+SELECT content FROM(SELECT *,(@i:=@i+1)s FROM diaries,(SELECT(@i:=0)) b WHERE userId=#{userId} ORDER BY id ASC)a WHERE a.s=#{page};
+    	
+  
+    </select>
+    
+    <select id="findCount" resultType="int">
+    	select count(*) from diaries where userId=#{userId}
+    </select>
+    
+</mapper>
+
+
+
