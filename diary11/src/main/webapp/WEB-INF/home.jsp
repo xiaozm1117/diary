@@ -19,6 +19,8 @@
      <textarea rows="20" cols="20" id="comment" class="tt" placeholder="这里bai输入文字"></textarea>
 		
 	 <button onclick="read()">翻看日记</button>
+	 
+	 <a href="">相册</a>
 	 <button onclick="submit()">提交</button>
 	 
 	
