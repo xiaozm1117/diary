@@ -12,7 +12,7 @@
     <select id="readFilePath" resultType="String">
     	
     	
-SELECT content FROM(SELECT *,(@i:=@i+1)s FROM diaries,(SELECT(@i:=0)) b WHERE userId=#{userId} ORDER BY id ASC)a WHERE a.s=#{page};
+select content from(select *,(@i:=@i+1)s from diaries,(select(@i:=0)) b where userId=#{userId} order by id asc)a where a.s=#{page};
     	
   
     </select>

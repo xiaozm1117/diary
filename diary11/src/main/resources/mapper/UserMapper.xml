@@ -11,8 +11,8 @@
     
     <select id="loginSubmit" resultType="com.diary.vo.User"  parameterType="com.diary.vo.User">
     
-    	SELECT * FROM USER 
-    	WHERE username=#{username} and password=#{password}
+    	select * from user
+    	where username=#{username} and password=#{password}
     
     </select>
     

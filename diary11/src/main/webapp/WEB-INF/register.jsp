@@ -22,7 +22,7 @@
 		function checkname(){
 			ischeckname=false;
 			$.post("/service/user/doCheckname",$("#formRegister").serialize(),function(data){
-				alert("check uname");
+
 				if(data.message=="ok"){$("input[name='username']").val("");}
 				ischeckname=true;})}
 		
