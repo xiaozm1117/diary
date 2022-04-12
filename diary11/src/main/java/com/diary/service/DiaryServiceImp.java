@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +21,18 @@ public class DiaryServiceImp implements DiaryService {
 	private DiaryDao diaryDao;
 	
 	@Override
-	public void write(String content) {
+	public void write(String content, String realPath) {
 		Diary diary=new Diary();
 		int userId=UserThreadLocal.get().getId();
 		diary.setUserId(userId);
 		
 		int count=diaryDao.findCount(userId);
 		//
-		File picFile = new File("D:/diary/userId="+userId);
+		File picFile = new File(realPath+"/diary/userId="+userId);
 		if(!picFile.exists()){
 			picFile.mkdirs();
 		}
-		String DatePath ="D:/diary/userId="+userId+"/p"+ (count+1);
+		String DatePath =realPath+"/diary/userId="+userId+"/p"+ (count+1);
 		diary.setContent(DatePath);
 		diary.setCreateTime(new Date());
 		

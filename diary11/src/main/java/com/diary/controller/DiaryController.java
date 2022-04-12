@@ -3,7 +3,6 @@ package com.diary.controller;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.diary.service.DiaryService;
 import com.diary.vo.Result;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/diary")
@@ -29,9 +30,9 @@ public class DiaryController {
 	
 	@ResponseBody
 	@RequestMapping("/submit")
-	public Result write(String content) {
+	public Result write(String content, HttpServletRequest request) {
 		try {
-			diaryService.write(content);
+			diaryService.write(content,request.getSession().getServletContext().getRealPath("/"));
 			return new Result("ok");
 		} catch (Exception e) {
 			e.printStackTrace();
